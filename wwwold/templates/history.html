@@ -1,0 +1,58 @@
+<ion-view cache-view="false">
+  
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title class="brd_width">
+    <span class="bar-stable"><strong class="p1">HISTORY</strong></span>
+  </ion-nav-title>
+
+  <ion-nav-buttons side="right">
+    <div ng-controller="LoginCtrl">
+      <button class="button button-icon  ion-power" style="color: #fff" ng-click="logout()">
+      </button>
+    </div>
+  </ion-nav-buttons>
+
+
+  <ion-content class="back-image" padding=true ng-controller="HistoryCtrl">
+      <!-- <ion-refresher on-refresh="doRefresh()"></ion-refresher> -->
+    </div>
+
+     <div class="row " ng-controller="TabsCtrl">
+      <a class="col-50 buttn button button-full bar-stables" ng-class="{'tabsactive': tabactive == 'order'}" ng-click="order()"><strong>ORDERS</strong></a>
+      <a class="col-50 buttn button button-full bar-stables" ng-class="{'tabsactive': tabactive == 'history'}" ng-click="history()"><strong>HISTORY</strong></a>
+    </div>
+
+    
+      <div class="row" >
+        <div class="col col-25">
+          <img src="img/calendar-solid.png" style="height: 80%; width: 75%; opacity: 0.7">
+        </div>
+        <div class="col col-50 " ng-show="!Historydate">
+          <h3 class="h32 txt_color1">{{datee | date:'dd-MMMM-yyyy'}}</h3>
+          <p class="txt_color1"> {{day | date:'EEEE'}}</p>
+        </div>
+        <div class="col col-50" ng-show="Historydate">
+          <h3 class="txt_color1">{{histrydatenow | date:'dd-MMMM-yyyy'}}</h3>
+          <p class="txt_color1"> {{histrydaynow | date:'EEEE'}}</p>
+        </div>
+        <div class="col col-25">
+          <ionic-datepicker date="currentDate" min="minDate" max="maxDate" ng-click="openDatePicker()">
+            <a class="button button-full button-small button-positive">Select Date </a>
+          </ionic-datepicker>
+        </div>
+      </div>
+
+   
+      <div class="list card item" ng-show="order.delivery_status == 'Completed'" ng-repeat="order in todayorders">
+        <div class="padding center_align font" ng-click="historytag(order.date,order.meal_time,order.tenant.id)">
+          <h2 class="txt_color1"><strong>{{order.tenant.name}}</strong></h2>
+          <p class="txt_color2"><strong>{{order.meal_time}}</strong></p>
+        </div>
+      </div>
+
+  </ion-content>
+</ion-view>
