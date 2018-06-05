@@ -42,7 +42,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.dispatch','st
     }
 
     /*document.addEventListener("deviceready", function() {
-    hockeyapp.start(success, error, "1ac193d484b74d5fa5f2a05794bd2eb0");
+    hockeyapp.start(success, error, "d47a5740d9f7494c846806964943b019");
     
     function error(error) {
      console.log(error);
@@ -347,7 +347,7 @@ $ionicConfigProvider.tabs.position('bottom');
 //var CommonURL="http://api.learnstein.com:81";
 //var CommonURL="http://api.texparts.in:81"
 //var CommonURL="http://192.168.1.18:3000";  
-//var CommonURL="http://192.168.1.72:3005"; 
+var CommonURL="http://192.168.1.72:3005"; 
 //var CommonURL="http://13.126.175.143:3000";
 //var CommonURL="http://115.111.129.98:6002";
-var CommonURL="http://api.idlidabba.com"
+//var CommonURL="http://api.idlidabba.com"

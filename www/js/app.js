@@ -41,7 +41,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.dispatch','st
       StatusBar.styleDefault();
     }
 
-    /*document.addEventListener("deviceready", function() {
+    document.addEventListener("deviceready", function() {
     hockeyapp.start(success, error, "d47a5740d9f7494c846806964943b019");
     
     function error(error) {
@@ -52,7 +52,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.dispatch','st
      console.log(status);
     }
     
-   }, false);*/
+   }, false);
     
   });
 
