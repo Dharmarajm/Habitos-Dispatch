@@ -1,0 +1,28 @@
+<ion-view cache-view="false"> 
+    <ion-nav-title>
+        <span class="span">Idlidabba</span> <i item-right class="icon icon2 ion-android-cart"></i>
+    </ion-nav-title>
+	<ion-content  padding="true" class="back-img" ng-controller="HomeCtrl">
+
+	    <div ng-show="order.delivery_status == 'Dispatched'  || order.delivery_status == 'Delivered' || order.delivery_status == 'Completed'"  class="list" ng-repeat="order in todayorders">
+
+		    <div  ng-class="{'green': order.flag == 1, 'red': order.flag == 0}" class="item item-thumbnail-left row" ng-click="delivery(order.meal_time,order.tenant.name,order.flag_id,order.flag,order.tenant.id,order.delivery_status.order.meal_restriction_id)" >
+	              
+	              <div class="col col-25 time" >	
+				       <h2 class="p">{{order.data[0].time}}</h2>
+				       <p class="grey p">{{order.meal_time}}</p>
+			       </div>
+
+			       <div class="col col-75 padding">	
+				       <h2 class="h2">{{order.tenant.name}}</h2>
+				       <p >{{order.tenant.description}}</p>
+			       </div>
+			       
+			   
+
+
+	        </div>
+        </div>
+
+    </ion-content>
+</ion-view>

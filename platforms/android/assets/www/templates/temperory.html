@@ -1,0 +1,27 @@
+<ion-view cache-view="false">
+    <ion-nav-title>
+        <span class="span">Items of day</span>
+        <i item-right class="icon icon2 ion-android-restaurant"></i>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+      </button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right" >
+      <div ng-controller="OrderCtrl">
+        <p style="color: #fff">{{tenantname}}</p>
+        <p class="navcol">{{mealtypename}}</p>
+      </div>
+    </ion-nav-buttons>
+
+  	<ion-content class="back-image">
+      <div ng-controller="OrderCtrl">
+        <center><h2 style="color:#000">{{datenow}}</h2></center>
+      </div>
+
+      <div ng-controller="ItemsCtrl">
+      	
+      </div>
+  </ion-content>

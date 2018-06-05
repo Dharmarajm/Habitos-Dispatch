@@ -1,0 +1,108 @@
+.font {
+  font-family: 'Rubik', sans-serif !important;
+}
+
+.txt {
+  text-align: left !important;
+}
+
+
+/*.buttn:active{
+    color: #ED5323 !important;
+    border-bottom: 2px solid #ED5323;
+}*/
+
+.buttn:hover {
+  color: #ED5323 !important;
+  border-bottom: 2px solid #ED5323;
+}
+
+.center_align {
+  text-align: center;
+}
+
+.forms {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+.txt_color1 {
+  color: #112535 !important;
+}
+
+.txt_color2 {
+  color: #ED5323 !important;
+}
+
+.txt_align {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.h31 {
+  margin-bottom: 0px !important;
+  margin-top: 20px !important;
+}
+
+.h32 {
+  margin-bottom: 0px !important;
+}
+
+.button-calm {
+  background-color: #4a5154!important;
+}
+
+.button-balanced {
+  background-color: #ED5323 !important;
+}
+
+.bar-stables {
+  background-color: #4B4B4D!important;
+  color: #fff !important;
+}
+
+.brd {
+  border: solid 1px grey;
+}
+
+input[type="number"] {
+  border: solid 1px grey !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  padding-left: 2px !important;
+}
+
+
+/*.pdng{
+	padding-top: 20px !important; 
+	padding-bottom: 5px !important;
+}*/
+
+.button-smalls {
+  padding: 0px 3px 0px;
+  min-width: 28px;
+  min-height: 35px;
+  font-size: 12px;
+  line-height: 26px;
+}
+
+.button-smallsss {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-top: 4px;
+  min-height: 34px;
+  font-size: 14px;
+  font-family: 'Rubik', sans-serif !important;
+}
+
+.mrg {
+  margin: 10px !important;
+  margin-right: 10px !important;
+}
+
+.menu_border {
+  border-top: 2px solid #c5ced6;
+}

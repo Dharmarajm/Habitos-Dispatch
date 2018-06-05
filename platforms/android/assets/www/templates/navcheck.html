@@ -1,0 +1,83 @@
+ <ion-modal-view ng-controller="NavigateCtrl" cache-view="false">
+    <ion-header-bar class="bar bar-stable head">
+        <h1 class="title">Check Dispatch</h1>
+        <button class="button button-assertive button-clear ion-ios-close" style="font-size:24px;color:white;" ng-click="closeModal();">
+        </button>
+    </ion-header-bar>
+    <ion-content >
+	  
+
+	 <div class="card" ng-repeat="ite in historydatas">
+      <div class="item item-divider  item-icon-right">
+        <strong>{{ite.normal_menu}}&nbsp;-&nbsp;{{ite.actual_qty}}</strong>
+        <i class="icon">
+          <ion-toggle ng-click="Ischeck(ite,IsChecked[$index],$index)" ng-model="IsChecked[$index]" ng-checked="IsChecked" style="background-color:transparent;border-color:transparent;"> </ion-toggle>
+        </i>
+      </div>
+      <div class="item item-text-wrap row">
+      	<div class="col col-75">
+      		
+      		<strong ng-repeat="i in ite.utensil_name">{{i}}</strong>&nbsp;({{ite.quantity}})
+        	<div ng-repeat="i in ite.cate_name">{{i}}</div>
+   		 </div>
+        <div class="col col-25">
+        	<input placeholder="Enter Qty" type="number" ng-model="ite.dummy_qty" style="background-color:#C8C8C8; width:100%;" max="{{ite.quantity}}" ng-show="ite.is_checked == true" ng-reqiured="ite.is_checked" ng-if="ite.is_checked == true" required>
+    	</div>
+      </div>
+    </div>
+
+
+
+
+      <!-- <form name="delivery">
+    	<div class="container padder">
+		  <table class="table table-striped table-bordered table-curved">
+		    <thead>
+		      <tr class="bg-color">
+		        <td>Food</td>
+		        <td>Utensils</td>
+		        <td>Dispatch&nbsp;Qty / Actual&nbsp;Qty </td>
+		        <td>Accepted</td>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr ng-repeat="ite in historydatas">
+		      	
+		        <td class="coler">{{ite.normal_menu}}</td>
+		        <td><div ng-repeat="i in ite.utensil_name">{{i}}</div></td>
+		        <td>{{ite.quantity}}&nbsp;/&nbsp;{{ite.actual_qty}}
+			     
+			          <input placeholder="Enter Qty" type="number" ng-model="ite.dummy_qty" style="background-color:#C8C8C8; width:100%;" max="{{ite.quantity}}" ng-show="ite.is_checked == true" ng-reqiured="ite.is_checked" ng-if="ite.is_checked == true" required>
+			    </td>
+		        <td>
+		        	<ion-toggle ng-click="Ischeck(ite,IsChecked[$index],$index)" ng-model="IsChecked[$index]" ng-checked="IsChecked" style="background-color:transparent;border-color:transparent;"> </ion-toggle>
+		        	 -->
+		        	   <!--input placeholder="Enter Reason" type="text" ng-model="val[$index]" style="background-color:#C8C8C8; width:50%;" ng-show="reasonid == ite.dispatch_id || ite.is_checked == false" ng-reqiured="!val[$index]" ng-if="ite.is_checked == false" required-->
+		        	   	<!-- <select  ng-model="val[$index]" ng-options="reason for reason in ['Damaged Utensil','Qty Mismatch']" style="width: 50%;" ng-show="reasonid == ite.dispatch_id || ite.is_checked == false" ng-reqiured="!val[$index]" ng-if="ite.is_checked == false" required>
+				          <option value="">
+				            <p>Select Reason</p>
+				          </option>
+				        </select> -->
+		        <!--  
+		        </td>
+	
+		      </tr>
+		    </tbody>
+		  </table>
+		</div>
+ -->
+		
+
+	    <div class="row">
+	    	<div class="col col-100">
+	    		<a class="button button-block button-darker button-small" ng-disabled="delivery.$invalid" ng-click="Check()">Accept</a>
+	    	</div>
+	    </div>
+
+	  </form>
+	   
+	    
+
+
+    </ion-content>
+</ion-model-view>

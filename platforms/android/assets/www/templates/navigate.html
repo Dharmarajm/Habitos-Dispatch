@@ -1,0 +1,99 @@
+<ion-view cache-view="false">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-title class="brd_width">
+    <span class="bar-stable"><strong class="p1">NAVIGATE</strong></span>
+  </ion-nav-title>
+    <ion-nav-buttons side="right" >
+     <div  ng-controller="UserCtrl" class="button button-icon" style="color: #fff">
+      {{usersname}}</div>
+      <div ng-controller="LoginCtrl">
+      <button class="button button-icon  ion-power" style="color: #fff" ng-click="logout()">
+      </button>
+    </div>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+
+  
+
+  <ion-content class="back-image" ng-controller="MapCtrl">
+  <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+
+    <a href="tel:+91 9629442049" class="button btn button-balanced dropmap">call</a>
+  <div class="row">
+      <!-- <div class="row" ng-show="startshow == true"> -->
+        <div class="col col-50" ng-show="val == 'stop' || val == null">
+          <a class="button button-block button-positive button-small" ng-click="getDirections('start');newDirctions()">Start</a>
+        </div>
+        <div class="col col-50" ng-show="val == 'start' || val == 'resume'">
+          <a class="button button-block button-energized button-small" ng-click="getDirections('pause');">Pause</a>
+        </div>
+        <div class="col col-50" ng-show="val == 'pause'">
+          <a class="button button-block button-positive button-small" ng-click="getDirections('resume');restart()">Resume</a>
+        </div>
+        <div class="col col-50">
+          <a ng-disabled="val == 'pause' || val == '' || val == null" class="button  button-block button-assertive button-small" ng-click="getDirections('stop');stopdirections()">Delivered</a>
+        </div>
+        
+      </div>
+
+      <!-- {{livecurrent}} -->
+     <!--  {{sources}} -->
+
+
+      
+
+      <center ng-show="val == 'pause'">Journey Paused at:<h3 style="color:black"> {{time | date:'h:mm:ss a'}}</h3></center>
+       <center ng-show="val == 'start'">Journey Started at:<h3 style="color:black"> {{time | date:'h:mm:ss a'}}</h3></center>
+       <center ng-show="val == 'resume'">Journey Resume at:<h3 style="color:black"> {{time | date:'h:mm:ss a'}}</h3></center>
+
+      <select class="button-darkless" ng-show="val == 'pause'" ng-change="reason(e_reason)" ng-model="e_reason" style="height: 28px;" ng-options="i.reason for i in emergencies">
+                  <option value="">Emergenices...</option>
+                </select>
+
+      
+      <!-- <div class="row">
+        <div class="col col-50">
+          <input type="text" id="origin" placeholder="Source" ng-model="directions.origin" />
+        </div>
+        <div class="col col-50">
+          <input type="text" id="destination" placeholder="Destination" ng-model="directions.destination" />
+        </div>
+    </div> -->
+     <!--  <div class="row">
+        <button class="button button-block button-balanced button-small" ng-click="getDirections()">Get Directions</button>
+      </div> -->
+
+        <!--google-map control="map.control"  center="map.center" zoom="map.zoom">
+          <marker coords="marker.center"></marker>
+        </google-map-->
+        <div ng-if="mapStaus == 0">
+        <center>
+          <h4>Please trun on GPS Location And Pull to Refresh</h4>
+        </center>
+         </div>
+
+        <!-- <div ng-if="mapStaus == 1" > -->
+          <map zoom="14" center="{{sources}}" style="height:580px;" >
+            <directions
+              draggable="false"
+              panel=""
+              avoid-ferries="true"
+              travel-mode="DRIVING"
+              waypoints=""
+              origin='{{sources}}'
+              destination='{{destinate}}'
+            >
+            </directions>
+            <marker position='{{livecurrent}}'  centered="true"></marker>
+          </map>
+      <!--   </div> -->
+          
+
+
+
+
+
+  
+    </ion-content>
+</ion-view>

@@ -1,0 +1,67 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com-badrit-base64": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "com.testfairy.cordova-plugin": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "onesignal-cordova-plugin": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova.plugins.diagnostic": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-request-location-accuracy": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-hockeyapp": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.idlidappa995751"
+        }
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com-badrit-base64": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-hockeyapp": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-request-location-accuracy": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "onesignal-cordova-plugin": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.altius.idlidabba"
+        }
+    }
+}

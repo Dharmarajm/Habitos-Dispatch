@@ -1,0 +1,56 @@
+
+<ion-modal-view ng-controller="DeliveryCtrl" >
+
+  <ion-header-bar class="bar bar-stable head"  >
+    <h1 class="title">Selected</h1>
+    <button class="button head ion-ios-close" style="font-size:24px;" ng-click="closeModal();"></button>
+  </ion-header-bar>
+  <ion-content class="padding">
+   
+ 
+        <!-- <label class="item item-input" ng-repeat="item in menus">
+            <ion-checkbox ng-model="ans.selectmenus[$index]" ng-change="selected(item.menu)" ng-checked="mulvalu.indexOf(item.menu) > -1" style="width: 100%;">
+               {{item.menu}}
+            </ion-checkbox>
+        </label>
+
+        {{mulvalu}} -->
+		<!-- {{selection.indexOf(item.menu) >-1}} -->
+        <!-- <div class="row">
+            <div class="col col-100">
+				<div class="list listbox">
+                  <div class="item" ng-click="closeModal()" >Selected</div>
+                </div>
+			</div>
+        </div> -->
+
+        
+            <!--div class="row">
+              <p ng-model="answersns" ng-init="answersns ='menus'+$index"></p>
+              <h3  class="col col-100" ng-show="ans.compliantanswer[$index] == 'Complaint'">
+                <multiselect 
+                  header-text="Header"
+                  items="answersns"
+                  text-property="menu"
+                  value-property="id"
+                  is-translate="false"
+                  text="{{answersns}}"
+                  value-changed="valchange(value)"
+                  default-value="default">
+                </multiselect>
+              </h3>
+            </div-->  
+
+        <div ng-repeat="books in menus">
+            <input type="checkbox" ng-model="books.selected"
+                ng-true-value="'{{books.menu}}'" ng-false-value="''"
+                id="'{{books.menu}}'" ng-checked="mulvalu.indexOf(books.menu) > -1" />
+
+            {{ books.menu }}
+        </div>
+
+        <p><button ng-click="submit(menus)">Submit</button></p>
+     <p>{{the_list}}</p>
+  </ion-content>
+</ion-model-view>
+

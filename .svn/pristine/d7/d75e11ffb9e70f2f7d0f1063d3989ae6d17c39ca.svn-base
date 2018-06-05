@@ -1,0 +1,205 @@
+<ion-view cache-view="false">
+  <!--     <ion-nav-title>
+           <span class="span">Return Food</span> <i item-right class="icon icon2 ion-android-sync"></i>
+      </ion-nav-title>
+      <ion-nav-buttons side="left">
+         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+         </button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right" >
+        <div ng-controller="OrderCtrl">
+          <p style="color: #fff">{{tenantname}}</p>
+          <p class="navcol">{{mealtypename}}</p>
+        </div>
+      </ion-nav-buttons> -->
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title class="brd_width">
+    <span class="bar-stable"><strong class="p1">Return Food</strong></span>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <div ng-controller="LoginCtrl">
+      <button class="button button-icon  ion-power" style="color: #fff" ng-click="logout()">
+      </button>
+    </div>
+  </ion-nav-buttons>
+
+  <ion-content class="back-image">
+
+    <div ng-controller="ReturnCtrl">
+
+      <!--div class="card" padding="true">
+              <div class="row" style="background-color:#21966B">
+                  <div class="col col-50 ">
+                      <h5>Items</h5>
+                  </div>
+                  <div class="col col-50 ">
+                      <h5>UOM</h5>
+                  </div>
+              </div>
+              <br>
+            
+              <div ng-repeat="return in returntoday">
+                  <div class="row">
+                    <div class="col col-50">
+                         {{return.items}}
+                    </div>
+                    <div class="col col-50">
+                      <input type="text" ng-model="returns.answer[$index]" style="width:100%;background-color:#D7D7D7">
+                    </div>
+                  </div>
+             </div> 
+          </div-->
+
+      <div class="card" padding="true">
+        <div class="row font bg-color">
+          Select Reason
+        </div>
+
+
+        <div class="txt_align">
+          <p>Food to return</p>
+          <select class="button button-smallsss brd txt" ng-Required="true" ng-model="ans.mealmenu" ng-options="i.items for i in returntoday" style="width: 100%;">
+            <option value="">Select Food...</option>
+          </select>
+        </div>
+        <div class="row txt_align">
+          <div class="col-67">
+            <p>Reason</p>
+            <select class="button button-smallsss brd txt" ng-Required="true" ng-model="ans.mealsquality" ng-options="i.wastefood for i in complaintfoods" style="width: 100%;">
+              <option value="">Select Reason...</option>
+            </select>
+          </div>
+          <div class="col-offset-10">
+            <p>Qty</p>
+            <input class="" type="number" placeholder="Qty" ng-Required="true" ng-model="ans.uom" style="width: 80%;">
+          </div>
+        </div>
+        <div class="txt_align">Remarks</div>
+        <div>
+          <textarea class="mrg brd txt_align" placeholder="comments" style="width: 95%;" ng-model="waste.comment" rows="4" name="description"></textarea>
+        </div>
+
+        <!--               <div class="col col-20">
+                  <h3 class="icon ion-camera" ></h3>
+                </div> -->
+
+        <div class="" style="text-align: center;">
+          <!-- <div class="col col-50"> -->
+          <button class="button button-calm icon-left ion-ios-camera-outline font" ng-model="picture" ng-click="takePicture()">Add Photo</button>
+          <!-- </div> -->
+          <!-- <div class="col col-50"> -->
+          <button ng-disabled="!ans.mealmenu || ans.mealmenu ==null && !ans.mealsquality || ans.mealsquality == null  && !ans.uom || ans.uom ==null" class="button button-positive font" ng-click="addNewfood();ans.mealmenu =null;ans.mealsquality =null;picture='';ans.uom =null;ans.comment=''">Save & Add New</button>
+          <!-- </div> -->
+        </div>
+        <br>
+
+
+
+
+
+
+        <!--             <div class="button-bar group">      
+                 <input class="inputMaterial" type="text" ng-Required="true" ng-model="ans.comment"  required>
+                 <span class="highlight"></span>
+                 <div class="label">Remark</div>
+              </div> -->
+
+
+
+        <!--         <div class="row">
+          <div class="col col-30 col-center text-center">
+
+          </div>
+        </div> -->
+
+      </div>
+
+
+
+      <div class="card" ng-show="food_returns.length >= 1">
+
+        <div class="row font bg-color">
+          <div class="col colex">Food Name</div>
+          <div class="col colex">Reason</div>
+          <div class="col colex" style="text-align: center;">Picture</div>
+          <div class="col colex" style="text-align: center;">Qty</div>
+          <div class="col colex" style="text-align: center;">Delete</div>
+        </div>
+
+        <div class="row row-center font " ng-repeat="item in food_returns">
+          <div class="col colex">{{item.foodmenuitem}}</div>
+          <div class="col colex">{{item.reason_type}}</div>
+          <div class="col colex" style="text-align: center;"><img ng-src="{{item.camerapicture}}" height="50px;"></div>
+          <div class="col colex" style="text-align: center;">{{item.quantity}}</div>
+          <div class="col colex" style="text-align: center;">
+            <i ng-click="remove($index);" class="button icon ion-minus button-assertive button-small"></i>
+          </div>
+        </div>
+
+
+
+        <!-- <div class="card" ng-show="items.length >= 1">
+            <div class="item item-text-wrap">
+              <div class="row" ng-repeat="item in items">
+                <div class="col col-40">{{item.foodmenuitem}}</div>
+                <div class="col col-40">{{item.foodquality}}</div>
+                <div class="col col-20">
+                  <a ng-click="remove($index);" class="button button-small button-assertive">
+                    Remove
+                  </a>
+                </div>
+              </div>
+            </div> -->
+      </div>
+
+      <div class="card">
+        <div class="row bg-color">
+          Check Utensils
+        </div>
+        <div class="txt_align">
+          <p>Utensils</p>
+          <select class=" button button-smallsss brd txt" ng-model="ans.utensils" ng-change="returnUtnsilsfun();returnRemove(index);ans.utensils=''" style="width: 100%" ng-options="i.utensil for i in returnutensil">
+            <option value="">Check Utensils...</option>
+          </select>
+        </div>
+        <br>
+        <!--div class="col col-30 col-center text-center">
+              <button style="width:70%;"  class="button button-small button-positive" ng-disabled="!ans.utensils" ng-click="returnUtnsilsfun();">Check and New</button>
+            </div-->
+        <!-- {{utensilsreturn}} -->
+        <div class="row" ng-repeat="n in utensilsreturn">
+          <div class="col col-50" style=" text-transform: uppercase;">{{n.value}}</div>
+          <div class="col col-40">&nbsp;Returned</div>
+          <div class="col col-40"><i class="button icon ion-minus button-assertive button-small" ng-click="utenremove($index,n)"></i></div>
+        </div>
+
+      </div>
+
+      <!-- <div class="card" padding="true">
+
+              
+             <br>
+          
+              
+
+              
+              <div class="row" >
+                 <label>Remarks</label>
+              </div>
+              <div class="row" >
+                  <div class="col col-100">
+                      <textarea style="width:100%" placeholder="comments" ng-model="ans.comment" rows="4"  name="description"></textarea>
+                  </div>
+              </div>
+          </div>   -->
+      <div class="txt txt_align">
+        <button class="button button-block button-positive" ng-click="reurnfood(food_returns.length,utensilsreturn.length)">Save</button>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
