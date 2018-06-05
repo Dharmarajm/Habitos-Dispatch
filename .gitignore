@@ -3,3 +3,9 @@
 
 node_modules/
 platforms/
+tmp/
+temp/
+platforms/
+!platforms/android/build-extras.gradle
+plugins/
+plugins/android.json
