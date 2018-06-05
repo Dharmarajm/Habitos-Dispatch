@@ -1,0 +1,113 @@
+ <ion-modal-view ng-controller="NavigateCtrl" cache-view="false">
+    <ion-header-bar class="bar bar-stable head">
+        <h1 class="title">Delivery Details</h1>
+        <button class="button button-assertive button-clear ion-ios-close" style="font-size:24px;color:white;" ng-click="closeModal();">
+        </button>
+    </ion-header-bar>
+    <ion-content>
+        
+        <center><h3>{{tenantname}}</h3></center>
+	   
+		        
+	    <!-- <div class="container padding">
+		  <table class="table table-striped table-bordered table-curved">
+		    <thead>
+		      <tr class="bg-color">
+		        <td>Start Time</td>
+		        <td>Pause Time</td>
+		        <td>Resume Time</td>
+		        <td>Stop Time</td>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr ng-repeat="time in historytimes">
+		        <td>{{time.start_time}}</td>
+		        <td><div ng-repeat="pause in time.pause_time">{{pause}}</div></td>
+		        <td><div ng-repeat="resume in time.resume_time">{{resume}}</div></td>
+		        <td>{{time.stop_time}}</td>
+		      </tr>
+		    </tbody>
+		  </table>
+		</div> -->
+
+		 <div class="card">
+
+		        <div class="list " ng-repeat="time in historytimes" >
+		         	
+		         	<div class="row">
+		         		<div class="col col-50">Start Time</div>
+		         		<div class="col col-50">{{time.start_time}}</div>
+		         	</div>
+
+		         	<div class="row">
+			            <div class="col col-50">Pause Time</div>
+			            <div class="col col-50">
+			            	<div  ng-repeat="pause in time.pause_time">
+			            		{{pause}}
+			            	</div>
+			            </div>
+			        </div>
+
+			        <div class="row">
+			            <div class="col col-50">Resume Time</div>
+			            <div class="col col-50">
+			            	<div class="row" ng-repeat="resume in time.resume_time">
+			            		{{resume}}
+			            	</div>
+			            </div>
+		        	</div>
+		        	<div class="row">
+			            <div class="col col-50">Stop Time</div>
+			            <div class="col col50">{{time.stop_time}}</div>
+
+		        	</div>
+		    	</div>
+		    	<!-- <div class="row" ng-repeat="time in historytimes">
+		            <div class="col col-50">{{time.start_time}}</div>
+		            <div class="col col1"><div ng-repeat="pause in time.pause_time">{{pause}}</div></div>
+		            <div class="col col1"><div ng-repeat="resume in time.resume_time">{{resume}}</div></div>
+		            <div class="col col1">{{time.stop_time}}</div>
+		        </div> -->
+		    </div>
+
+		<div class="container padder">
+		  <table class="table table-striped table-bordered table-curved">
+		    <thead>
+		      <tr class="bg-color">
+		        <td>Food</td>
+		        <td>Items</td>
+		        <td>Utensils</td>
+		        <td>Total Qty</td>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr ng-repeat="ite in historydatas">
+		        <td>{{ite.normal_menu}}</td>
+		        <td><div ng-repeat="j in ite.cate_name">{{j}}</div></td>
+		        <td><div ng-repeat="i in ite.utensil_name">{{i}}</div></td>
+		        <td>{{ite.quantity}}</td>
+		      </tr>
+		    </tbody>
+		  </table>
+		</div>
+
+		    <!-- <div class="card">
+		        <div class="row header">
+		        	<div class="col col1">Food</div>
+		         	<div class="col col1">Items</div>
+		            <div class="col col1">Utensils</div>
+		            <div class="col col1">Total Qty</div>
+		        </div>
+		    	<div class="row" ng-repeat="ite in historydatas">
+		    		<div class="col col1" >{{ite.normal_menu}}</div>
+		            <div class="col col1" ><div ng-repeat="j in ite.cate_name">{{j}}</div></div>
+		            <div class="col col1"><div ng-repeat="i in ite.utensil_name">{{i}}</div></div>
+		            <div class="col col1">{{ite.quantity}}.Qty</div>
+		        </div>
+		    </div> -->
+
+
+
+
+    </ion-content>
+</ion-model-view>

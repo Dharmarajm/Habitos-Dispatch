@@ -1,0 +1,52 @@
+<ion-view cache-view="false">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-title class="brd_width">
+    <span class="bar-stable"><strong class="p1">ORDER</strong></span>
+  </ion-nav-title>
+    <ion-nav-buttons side="right" >
+    <div  ng-controller="UserCtrl" class="button button-icon" style="color: #fff">
+      {{usersname}}</div>
+   
+      <div ng-controller="LoginCtrl">
+      <button class="button button-icon  ion-power" style="color: #fff" ng-click="logout()">
+      </button>
+    </div>
+    </ion-nav-buttons>
+
+  </ion-nav-bar>
+
+
+    <ion-content class="back-image" padding=true ng-controller="NavigateCtrl">
+      <ion-refresher on-refresh="doRefresh()"></ion-refresher>  
+   
+      <!-- <div ng-controller="MapCtrl">
+        <a class="button button-block button-small button-darkless" ng-click="history()">History</a>
+      </div> -->
+
+      
+        <!--ion-refresher on-refresh="doRefresh()"></ion-refresher-->
+
+        <center><h2 style="color:#000">{{datenow}}</h2></center>
+        <div class="list" ng-show="order.delivery_status == 'packed' || order.delivery_status == 'Dispatched'  || order.delivery_status == 'Delivered' || order.delivery_status == 'Completed' " ng-repeat="order in todayorders"  ng-class="{'green': order.delivery_status == 'Delivered','dispatch': order.delivery_status == 'Completed'}">
+          <div class="item item-thumbnail-left" >
+            <div class="row">
+              <div class="col col-50" ng-click="navi(order.tenant.name,order.meal_time,order.tenant.id,order.tenant.description,order.flag_id,order.delivery_status,order.tenant.latitude,order.tenant.longitude)">
+                <h2>{{order.tenant.name}}</h2>
+                <p>{{order.tenant.description}}</p>
+              </div>
+              <div class="col col-30 colerlast" ng-click="navi(order.tenant.name,order.meal_time,order.tenant.id,order.tenant.description,order.flag_id,order.delivery_status,order.tenant.latitude,order.tenant.longitude)">
+                <p>{{order.meal_time}}</p>
+                <p>{{order.time}}</p>
+              </div>
+              <div class="col col-20">
+                 <a class="button button-block button-small button-darkless" ng-click="history(order.tenant.name,order.tenant.id,order.meal_time)">History</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        
+
+    </ion-content>
+</ion-view>

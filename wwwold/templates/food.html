@@ -1,0 +1,193 @@
+<ion-view view-title="Food" cache-view="false">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-buttons side="right">
+        <div ng-controller="HomeCtrl">
+            <div ng-click="order()">
+              <p style="color:#fff;font-style:oblique;" >{{tenant_name}}</p>
+              <p class="navcol">{{mealtype_name}}</p>  
+            </div> 
+        </div>
+    </ion-nav-buttons>
+  </ion-nav-bar>  
+
+  <ion-content class="back-img" ng-controller="FoodCtrl">
+    
+<!-- {{menus0[0].menu}}
+{{menus1[0].menu}}
+ -->
+
+
+      <form name="delivery">
+        
+        <div class="card" ng-repeat="food in foods">
+          <div class="item item-text-wrap">
+            
+            <div class="row">
+              <h3 class="col col-100">{{food.menu}}</h3>
+            </div>
+            
+            <div class="row platform-android">
+              <h3 class="col col-50">
+                <ion-radio ng-click="ratingitem(1);removefood(food.menu)" name="radio{{food.id}}" ng-value='food.answer[0]' id="{{food.answer[0]}}" ng-Required="true" ng-model="ans.compliantanswer[$index]">&nbsp;{{food.answer[0]}}</ion-radio>
+              </h3>
+              <h3 class="col col-50">
+                <ion-radio ng-click="fooditem(food)" name="radio{{food.id}}" ng-value='food.answer[1]' id="{{food.answer[1]}}"  ng-Required="true" ng-model="ans.compliantanswer[$index]">&nbsp;{{food.answer[1]}}</ion-radio>
+              </h3>
+              
+            </div>
+
+          </div>
+        </div>
+        
+        <!-- <div class="card">
+          <div class="item item-text-wrap">
+            <h3>Capture Image&nbsp;<i class="icon ion-camera" style="margin-top:6px;" ng-click="takePicture()"></i></h3> 
+          </div>
+        </div> -->
+
+
+
+
+        <div class="card" ng-show="itemsOffood.length >= 1">
+          <div class="item item-text-wrap">
+            <div class="row">
+              <div class="col col 80">  
+                <h3>Enter Food Complaints</h3>
+              </div>
+              <div class="col col-20">
+                <i class="icon camericon ion-camera" ng-model="foodaudit" ng-click="takePicture()"></i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-50">
+                <h3>
+                  <select class="button-balanced" ng-model="ans.mealmenu" style="height: 28px;" ng-options="i.namefood for i in itemsOffood">
+                    <option value="">Select Food...</option>
+                  </select>
+                </h3>
+              </div>
+              <div class="col col-50">
+                <h3>
+                  <select class="button-balanced" ng-model="ans.mealsquality" style="height: 28px;" ng-options="i.wastefood for i in complaintfoods">
+                    <option value="">Select Reason...</option>
+                  </select>
+                </h3>
+              </div>
+              
+
+            </div>
+            
+            <div class="row"> 
+              <div class="col col-30 col-center text-center">
+                <button style="width:70%;" ng-disabled="!ans.mealmenu || ans.mealmenu == '' && !ans.mealsquality || ans.mealsquality == ''"class=" button-small button-dark button-darker" ng-click="addNewfood();ans.mealmenu='';ans.mealsquality='';foodaudit=''">Save & Add New</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card" ng-show="items.length >= 1">
+          <div class="item item-text-wrap">
+            <div class="row" ng-repeat="item in items">
+              <div class="col col-40">{{item.foodmenuitem}}</div>
+              <div class="col col-40">{{item.reason}}</div>
+              <div class="col col-20">
+                <a ng-click="remove($index);" class="button button-small button-assertive">
+                  Remove
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      <!--   <div class="card">
+          <div class="item item-text-wrap">
+            <h3>Meal Count</h3>
+              
+              <div class="row">
+                <div class="col col-50">
+                  <h3>
+                    <select class="button-balanced"  ng-model="ans.mealans" style="height: 28px;" ng-options="n.types for n in mealtype">
+                      <option value="">Select ...</option>
+                    </select>
+                  </h3>
+                </div>
+
+                <div class="col col-50">
+                  <h3>
+                    <select class="button-balanced" ng-model="ans.optionans" style="height: 28px;" ng-options="n.optypes for n in optiontype">
+                      <option value="">Select ...</option>
+                    </select>
+                  </h3>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col col-100">
+                  <h3>
+                    <input type="number"  ng-model="ans.countsmeal" class="button-balanced">
+                  </h3>
+                </div>
+              </div>
+
+            <div class="row">   
+              <div class="col col-30 col-center text-center">
+                <button style="width:70%;" class="button-small button-dark button-darker" ng-disabled="!ans.mealans || ans.mealans == null && !ans.optionans || ans.optionans == null && !ans.countsmeal || ans.countsmeal == null" ng-click="addNewChoice(); ans.mealans=null; ans.optionans=null; ans.countsmeal=null">Save & Add New</button>
+              </div>
+            </div>
+
+          </div>
+        </div> 
+
+        <div class="card" ng-show="mealcount.length >= 1">
+          <div class="item item-text-wrap">
+            <div class="row"  ng-repeat="item in mealcount">
+              <div class="col col-30">{{item.mealtypes}}</div>
+              <div class="col col-30">{{item.optiontypes}}</div>
+              <div class="col col-20">{{item.countofmeal}}</div>
+              <div class="col col-20">
+                <a ng-click="removeCount($index);" class="button button-small button-assertive">
+                  Remove
+                </a>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+       
+      
+
+
+
+        <div class="card">
+          <div class="item item-text-wrap">
+            <h3>Other Comments</h3>
+            <div class="row">
+              <textarea style="width:100%" placeholder="comments" ng-model="ans.comment" rows="4"  name="description"></textarea>
+            </div>
+          </div>
+        </div>
+
+        
+         <div class="card">
+            <div class="row">
+              <a class="button button button-small button-dark button-darker" ng-disabled="delivery.$invalid " ng-click="food()" style="width:100%" >Submit</a>
+            </div>
+        </div>
+
+        <!-- <div class="card">
+            <div class="row">
+              <a class="button button button-small button-dark button-darker" ng-disabled="delivery.$invalid || !mealcount.length >= 1" ng-click="food()" style="width:100%" >Submit</a>
+            </div>
+        </div> -->
+      
+      </form>
+
+      
+    <br>
+
+
+ 
+  </ion-content>
+</ion-view>

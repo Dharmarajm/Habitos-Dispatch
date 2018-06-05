@@ -1,0 +1,55 @@
+.platform-android .radio-icon{  visibility: visible !important;}
+
+.platform-android .radio-icon:before{
+  content:"" !important;
+  border:2px solid black !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  overflow:hidden !important;
+  font-size: 10px !important;
+}
+
+
+.platform-android .radio-icon:after{
+  content:"" !important;
+  position: absolute !important;
+  right: 20px !important;
+  top: 22px !important;
+  background:black !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  overflow:hidden !important;
+  font-size: 10px !important;
+
+
+  transition: -webkit-transform .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
+  transition: transform .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+.item-radio .item-content {
+    position: relative;
+    z-index: 2;
+    padding: 19px 21px 15px 10px;
+    border: none;
+    background-color: #fff;
+}
+
+/*.item-radio input:checked ~ .item-content {
+background: #F7F7F7;
+}*/
+
+.item-radio input:checked + .radio-content .radio-icon:after{
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.radio-positive .radio-icon:after{
+  background: #387EF5 !important;
+}
+.radio-positive .radio-icon:before{
+  border-color: #0C63EE !important;
+}

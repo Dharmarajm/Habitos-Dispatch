@@ -1,0 +1,152 @@
+<ion-view cache-view="false" view-title="Delivery">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-buttons side="right">
+        <div ng-controller="HomeCtrl">
+            <div ng-click="order()">
+              <p style="color:#fff;font-style:oblique;" >{{tenant_name}}</p>
+              <p class="navcol">{{mealtype_name}}</p>  
+            </div>
+        </div>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="back-img">
+  
+    <div ng-controller="DeliveryCtrl"> 
+     <form name="delivery">
+
+      <div class="card platform-android">
+        <div class="item item-text-wrap">
+         <h2>{{deliveries.Question}}</h2>
+          <div class="row">
+            <h3 class="col col-35">
+              <ion-radio  name="radio" ng-value='deliveries.Answer[0]' id="{{deliveries.Answer[0]}}" ng-Required="true" ng-model="ans.yesanswer">&nbsp;{{deliveries.Answer[0]}}</ion-radio>
+            </h3>
+           
+            <h3 class="col col-35">
+              <ion-radio name="radio" ng-value='deliveries.Answer[1]' id="{{deliveries.Answer[0]}}" ng-Required="true" ng-model="ans.yesanswer">&nbsp;{{deliveries.Answer[1]}}</ion-radio>
+            </h3>
+            
+            <div class="col col-30">
+             
+            </div>
+          </div>
+
+          <div class="row list" ng-show="ans.yesanswer == 'No'">
+            <div class="col col-30">
+              <h2>Delay</h2>
+            </div> 
+            <div class="col col-70">
+              <h3>
+              <select class="button-balanced" ng-required="ans.yesanswer == 'No'"  ng-model="ans.timesmin" style="height: 28px;" ng-options="n.time for n in minutees"><option value="">Select Minutes...</option>
+              </select>
+              </h3>
+            </div>
+          </div>
+ 
+        </div>
+      </div>
+
+      <div class="card platform-android">
+        <div class="item item-text-wrap">
+         <h2>{{deliverie.Question}}</h2>
+          <div class="row">
+            <h3 class="col col-35">
+              <ion-radio name="radio1" ng-value='deliverie.Answer[0]' id="{{deliverie.Answer[0]}}" ng-Required="true" ng-model="ans.yeanswer" ng-click="removeAll($index)">&nbsp;{{deliverie.Answer[0]}}</ion-radio>
+            </h3>
+           
+            <h3 class="col col-35">
+              <ion-radio  name="radio1" ng-Required="true" ng-value='deliverie.Answer[1]' id="{{deliverie.Answer[0]}}" ng-model="ans.yeanswer">
+             &nbsp;{{deliverie.Answer[1]}}</ion-radio>
+            </h3>
+
+            <div class="col col-30"></div>
+           </div>
+            
+           
+            <div class="row" ng-show="ans.yeanswer == 'No' ">
+              
+                <div class="col col-80">
+                  <h3 >
+                     <select class="button-balanced" ng-model="ans.mealmenu"  style="height: 30px;width:100%;"  ng-options="i.menu for i in menus">
+                      <option value="">Select Food...</option>
+                    </select>
+                  </h3>
+                </div>
+
+                <div class="col col-20">
+                     <button  class="button-small button-dark button-darker" ng-disabled="!ans.mealmenu || ans.mealmenu == '0'" ng-click="addNewfood();ans.mealmenu='0'">Add </button>
+                </div>
+              
+                  
+
+                 <!--  <multiselect
+                        header-text="Select"
+                        items="menus"
+                        text-property="menu"
+                        value-property="id"
+                        is-translate="false"
+                        text="select"
+                        value-changed="onValueChanged(value)"
+                        default-value="default">
+                  </multiselect> -->
+                
+              
+            </div>
+
+
+            <div class="card" ng-show="items.length >= 1 && ans.yeanswer == 'No'">
+              <div class="item item-text-wrap">
+                <div class="row" ng-repeat="item in items">
+                  <div class="col col-80">{{item}}</div>
+                  <div class="col col-20">
+                    <a ng-click="remove($index,item);" class="button button-small button-assertive">
+                      Remove
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--div class="row">
+              <div class="col col-100">
+                <h3 ng-show="ans.yeanswer == 'No' ">
+                  <multiselect
+                        header-text="Select"
+                        items="menus1"
+                        text-property="menu"
+                        value-property="id"
+                        is-translate="false"
+                        text="select"
+                        value-changed="valchange(value)"
+                        default-value="default">
+                  </multiselect>
+                </h3>
+              </div>
+            </div-->
+
+         <!--  <div class="row">
+            <div class="col col-100">
+              <h3 ng-show="ans.yeanswer == 'No' ">
+                <div class="list listbox">
+                  <div class="item" ng-click="openmodel()" >Multiselect</div>
+                </div>
+              </h3>
+            </div>
+          </div>
+ -->
+
+        </div>
+      </div>
+
+  
+      <div class="card">
+        <div class="item item-text-wrap">
+          <a class="button button-block button-dark button-darker" ng-disabled="delivery.$invalid || !items.length >= 1 && ans.yeanswer == 'No'" ng-click="deliver(deliveries.id,deliverie.id)">Save</a>
+        </div>
+      </div>
+      </form>
+    </div>
+
+  </ion-content>
+</ion-view>
+

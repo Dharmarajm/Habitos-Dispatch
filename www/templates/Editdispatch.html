@@ -1,0 +1,168 @@
+<ion-view cache-view="false">
+  
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title class="brd_width">
+    <span class="bar-stable"><strong class="font">REDISPATCH</strong></span>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <div ng-controller="LoginCtrl">
+      <button class="button button-icon  ion-power" style="color: #fff" ng-click="logout()">
+      </button>
+    </div>
+  </ion-nav-buttons>
+
+  <ion-content class="back-image" ng-controller="EditCtrl">
+
+    <div >
+      <div class="txt_align font">
+        <h3 class="h31 txt_color1">{{tenantname}}</h3>
+        <p class=" txt_color2"><strong>{{mealtypename}}&nbsp;/&nbsp;{{datee | date:'dd-MMMM-yyyy'}}&nbsp;/&nbsp;{{day | date:'EEEE'}}
+          </strong></p>
+      </div>
+    </div>
+
+    <div >
+
+    
+
+    
+
+      <div class="card" class="padder">
+        <div class="row bg-color">
+          <div class="col col-67 font"> Meal Type
+          </div>
+          <div class="col col-33 font" style="text-align: center;">Total Qty</div>
+        </div>
+        <div class="row row-center" ng-repeat="n in itemscountoption">
+          <div class="col2 col col-67 font">{{n.option_type}}</div>
+          <div class="col2 col  col-33 font" style="text-align: center;">{{n.total_count}}</div>
+        </div>
+        <div class="row row-center">
+          <div class="col col-67 font">Total Package</div>
+          <div class="col  col-33 font" style="text-align: center;">{{itemsofcount.count}}</div>
+        </div>
+      </div>
+
+      <div class="container padder">
+      <table class="table table-striped table-bordered table-curved">
+        <thead>
+          <tr class="bg-color">
+            <td>Items</td>
+            <td>Qty (per/head)</td>
+            <td>Total Qty</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-class="{'bg-green' : itemname == ite.item_name, 'bg-green' : itemname == ite.item_name }" ng-repeat="ite in itemsoftoday">
+            <td>{{ite.item_name}}</td>
+            <td>{{ite.quantity}}.{{ite.uom}}</td>
+            <td>{{ite.totalqty}}.{{ite.uom}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+     
+
+      <!-- Container Post Method  -->
+
+      <div class="card padder">
+
+        <div class="row bg-color">
+          Add container
+        </div>
+        <div class="row row-center">
+          <div class="col col-67">
+           <strong><p>Select Foods</p></strong>
+            <select class="button button-smallsss brd txt" ng-change="logdata(ans.foodsitem);" ng-model="ans.foodsitem" style="height: 28px; width:100%" ng-options="i.item_name for i in listofmenutoday | orderBy:'item_name'" >
+              <option value="">Select Foods...</option>
+            </select>
+          </div>
+
+          <div class="col col-offset-10">
+            <strong><p>Qty</p></strong>
+            <input type="number" ng-model="item_qty" placeholder="Qty" style="width:100%;">
+          </div>
+
+
+        </div>
+
+        <div class="row row-center">
+
+          <div class="col col-50">
+            <strong><p>Utensils Category</p></strong>
+            <select class="button button-smallsss brd txt" ng-change="utens(ans.utensitem)" ng-model="ans.utensitem" style="height: 28px;width:100%" ng-options="i.name for i in utensilsitems | unique: 'name' | orderBy:'name' ">
+              <option value="">Select Utensils...</option>
+            </select>
+          </div>
+         
+          <div class="col col-50" ng-show="utensilslength == 1">
+            <strong><p>Utensils </p></strong>
+            <select class="button button-smallsss brd txt" ng-model="ans.utens_id" ng-change="utensname(ans.utens_id)" style="height: 28px; width:100%;" ng-options="i.utensil_id for i in utensils | unique: 'utensil_id'">
+              <option value="">Numbers...</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row row-center" ng-show="multi_utensil == true">
+          <div class="col col-50">
+            <strong><p>Utensils Quantity</p></strong>
+            <input type="number" ng-model="ans.utensils_qty" placeholder="Utensils quantity" min="1" style="width:100%;border: 1px solid grey;border-radius: 4px 4px;">
+          </div>
+          <!-- <div class="col col-50">
+          </div> --> 
+        </div>
+        
+        <div class="row">
+          <div class="col col-20"></div>
+          <div class="col col-60">
+           <!-- ng-disabled="!ans.itemno || !ans.utensitem || !item_qty || !ans.foodsitem " -->
+            <a ng-disabled="!ans.utensitem || !item_qty || !ans.foodsitem || !ans.utens_id " class="button button-small button-darkless button-block button-positive" ng-click="additems()">Save & Add New</a>
+          </div>
+          <div class="col col-20"></div>
+        </div>
+
+        <div class="menu_border" ng-show="items.length >= 1">
+          <div class="row row-center " ng-repeat="item in items">
+            
+            <div class="col col-30 coler">{{item.foodname}}</div>
+              <!-- <div class="row" ng-repeat="number in item.no_of_utensil"> -->
+            <div class="col col-30 coler">{{item.no_of_utensil}}</div>
+            <div class="col col-30 coler">{{item.quantity}}</div>
+            <div class="col col-10 coler">
+              <a ng-click="remove($index,item);" class="button button-small icon ion-minus button-assertive">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row group1">
+        <div class="col col-10"></div>
+        <div class="col-80">
+          <a class="button button-block button-positive" ng-click="additem(items.length)">Setup Dispatch</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div ng-controller="MainCtrl" >
+      <ion-multiple-select title="Select Groups" template-url="templates/multipleSelect.html" options="groups" key-property="Id" value-property="Name" selected-property="Selected" class="item item-input item-icon-right" render-checkbox="false" animation="slide-in-left">
+            <div class="input-label">
+              Group
+            </div>
+            <i class="icon ion-android-arrow-dropdown"></i>
+          </ion-multiple-select>
+          <textarea class="padding" disabled="disabled">{{ getOptionsSelected(groups, 'Name', 'Selected') }}</textarea>
+        </div> -->
+  </ion-content>
+</ion-view>
+
+
+
+ 

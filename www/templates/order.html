@@ -1,0 +1,121 @@
+<ion-view hide-nav-bar="false" cache-view="false">
+  
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title class="brd_width">
+    <span class="bar-stable"><strong class="p1">MEAL PLANS</strong></span>
+  </ion-nav-title>
+
+  <ion-nav-buttons side="right">
+    <div ng-controller="LoginCtrl">
+      <button class="button button-icon  ion-power" style="color: #fff" ng-click="logout()">
+      </button>
+    </div>
+  </ion-nav-buttons>
+
+ 
+  <ion-content class="back-image" padding=true ng-controller="OrderCtrl">
+   <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+   <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+
+
+    <div class="row " ng-controller="TabsCtrl">
+      <a class="col-50 buttn button button-full bar-stables" ng-class="{'tabsactive': tabactive == 'order'}" ng-click="order()"><strong>ORDERS</strong></a>
+      <a class="col-50 buttn button button-full bar-stables" ng-class="{'tabsactive': tabactive == 'history'}" ng-click="history()"><strong>HISTORY</strong></a>
+    </div>
+
+
+<!--  <div ng-controller="OrderCtrl"> -->
+  
+  
+     
+      <div class="row ">
+        <div class="col col-25">
+          <img src="img/calendar-solid.png" style="height: 80%; width: 75%; opacity: 0.7">
+        </div>
+
+        <div class="col col-50 " ng-show="!Historydate">
+          <h3 class="h32 txt_color1">{{datee | date:'dd-MMMM-yyyy'}}</h3>
+          <p class="txt_color1"> {{day | date:'EEEE'}}</p>
+        </div>
+
+        <div class="col col-50" ng-show="Historydate">
+          <h3 class="txt_color1">{{histrydatenow | date:'dd-MMMM-yyyy'}}</h3>
+          <p class="txt_color1"> {{histrydaynow | date:'EEEE'}}</p>
+        </div>
+
+        <div class="col col-25">
+          <ionic-datepicker date="currentDate" min="minDate" max="maxDate" ng-click="openDatePicker()">
+            <a class="button button-full button-small button-positive">Select Date </a>
+          </ionic-datepicker>
+        </div>
+      </div>
+
+      <div class="row">
+        <select class="button button-smalls brd txt" ng-model="name" ng-options="n.name for n in tenantorders | unique: 'name' | orderBy:'name'" style="width: 100%;">
+          <option value="">
+            <p>Filter Customer Name</p>
+          </option>
+        </select>
+
+        <select class="button button-smalls brd txt" ng-model="test" ng-options="n.meal_time for n in todayorders | unique: 'meal_time' | orderBy:'meal_time'" style="width: 100%;">
+          <option value="">
+            <p>Mealtime</p>
+          </option>
+        </select>
+      </div>
+   
+
+
+      <div class="list card item" ng-class="{'dispatch': order.delivery_status == 'Dispatched','deliver': order.delivery_status == 'Delivered','complete': order.delivery_status == 'Completed','packed': order.delivery_status == 'packed'}" ng-repeat="order in todayorders| filter:test.meal_time | filter:name.name">
+
+      <div class="padding center_align font">
+        <span class="badge badge-assertive" ng-show="order.is_fully_dispatched == false" ng-click="EditDispatch(order.tenant.name,order.meal_time,order.flag_id,order.tenant.id,order.delivery_status,order);">
+            Redispatch
+        </span>
+        <div class="padding" ng-click="itemsoftoday(order.tenant.name,order.meal_time,order.flag_id,order.tenant.id,order.delivery_status,order);">
+          <h2 class="txt_color1"><strong>{{order.tenant.name}}</strong></h2>
+          
+          <a class="" ng-show="order.delivery_status == 'packed' || order.delivery_status == 'Dispatched'">
+            <p class="txt_color2"><strong>{{order.meal_time}}&nbsp;/&nbsp;PACKED</strong></p>
+          </a>
+          
+          <a class="" ng-show="order.delivery_status == 'Menu Planned'  || order.delivery_status == null || order.delivery_status == 'Meal Planned'">
+            <p class="txt_color2"><strong>{{order.meal_time}}&nbsp;/&nbsp;NOT DISPATCHED</strong></p>
+          </a>
+
+          <a class="" ng-show="order.delivery_status == 'Completed'">
+            <p class="txt_color2"><strong>{{order.meal_time}}&nbsp;/&nbsp;COMPLETED</strong></p>
+          </a>
+
+          <a class="" ng-show="order.delivery_status == 'Delivered'">
+            <p class="txt_color2"><strong>{{order.meal_time}}&nbsp;/&nbsp;DELIVERED</strong></p>
+          </a>
+          <a>
+            <p class="txt_color2"><strong>{{order.meal_restriction_name}}</strong></p>
+            <p>{{order.stud_type}}</p>
+          </a>
+
+        </div>
+
+        <div class="" ng-show=" order.delivery_status == 'Completed' || order.delivery_status == 'Delivered'">
+          <button class=" button button-small button-positive icon-left icon  ion-arrow-return-left" ng-click="returnfood(order.meal_time,order.tenant.id,order.flag_id,order.tenant.name,order)">Returns
+          </button>
+
+          <button class="button button-small button-dark icon-left icon  ion-trash-b" ng-click="wastagefood(order.meal_time,order.tenant.id,order.tenant.name,order)">Wastage
+          </button>
+        </div>
+      </div>
+    </div>
+
+  <!-- </div> -->
+<br>
+
+  </ion-content>
+
+
+
+</ion-view>

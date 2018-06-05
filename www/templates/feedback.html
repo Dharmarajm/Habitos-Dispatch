@@ -1,0 +1,95 @@
+<ion-view  view-title="Feedback" cache-view="false">
+ <ion-nav-bar class="bar-stable">
+  <ion-nav-buttons side="right">
+    <div ng-controller="HomeCtrl">
+        <p style="color:#fff;font-style:oblique;" >{{tenant_name}}</p>
+        <p class="navcol">{{mealtype_name}}</p>  
+    </div>
+  </ion-nav-buttons>
+ </ion-nav-bar> 
+  <ion-content class="padding back-img" ng-controller="FeedbackCtrl">
+   
+  <form name="delivery">
+
+    <div class="item item-input" >
+      <div class="input-label col col-30">Type</div>
+      <div class="col col-70">
+        <select ng-Required="true" class="button-balanced" style="height: 28px;" ng-model="ans.age_select" ng-options="n.key for n in agetype">
+          <option value="">Select ...</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="item item-input" >
+      <div class="input-label col col-30">Name</div>
+      <div class="col col-70">
+       <input type="text" ng-Required="true" style="background-color:#D2D1D1;" ng-model="ans.name">
+      </div>
+    </div>
+   
+    <div class="row">
+      <div class="col col-38"></div>
+       <h4 class="col col-24">Rating</h4>
+       <div class="col col-38"></div>
+    </div>
+    
+    <div class="row">
+      <div class="col col-10"></div>
+        <div class="col col-80">
+          <!--div class="item item-input" style="margin-top:-8%;"-->
+            <ionic-ratings ratingsobj='ratingsObject' ></ionic-ratings>
+          <!--/div-->
+
+        </div>
+      <div class="col col-10"></div>
+    </div>
+
+    <div class="item item-input" >
+      <div class="input-label col col-30">My Favourite Dish</div>
+      <div class="col col-70">
+        <select ng-model="ans.mfd_select" style="height: 28px;" class="button-balanced" ng-Required="true" ng-options="m.menu for m in mostfavdish">
+          <option value="">Select ...</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="item item-input" >
+      <div class="input-label col col-30">Least Favourite Dish</div>
+      <div class="col col-70">
+        <select ng-model="ans.lfd_select" style="height: 28px;" class="button-balanced" ng-Required="true" ng-options="m.menu for m in leastfavdish">
+          <option value="">Select ...</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="item item-input" >
+      <div class="input-label col col-30">Reason</div>
+      <div class="col col-70">
+        <select class="button-balanced" ng-model="ans.mealsquality" style="height: 28px;" ng-options="i.wastefood for i in complaintfoods">
+            <option value="">Select Reason...</option>
+        </select>
+       </div>
+    </div>
+
+    <div class="item item-input" >
+      <div class="input-label col col-30">Comment</div>
+      <div class="col col-70">
+       <textarea placeholder="Comments" ng-model="ans.comments" rows="4" name="description"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <a class="button button-block button-positive" ng-disabled="delivery.$invalid" style="width:100%" ng-click="feedback()">Save&nbsp;&&nbsp;Add&nbsp;New</a>
+    </div>
+   
+
+    <div class="row">
+       <a class="button button-block button-dark button-darker" style="width:100%" ng-click="exit()">Exit</a>
+    </div>
+
+
+  </form>  
+
+    
+  </ion-content>
+</ion-view>

@@ -1,0 +1,78 @@
+<ion-view cache-view="false">
+  <!--     <ion-nav-title>
+         <span class="span">Wastage Food</span> <i item-right class="icon icon2 ion-trash-b"></i>
+    </ion-nav-title>
+    <ion-nav-buttons side="left">
+       <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+     </ion-nav-buttons>
+     <ion-nav-buttons side="right" >
+      <div ng-controller="OrderCtrl">
+        <p style="color: #fff">{{tenantname}}</p>
+        <p class="navcol">{{mealtypename}}</p>
+      </div>
+    </ion-nav-buttons> -->
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title class="brd_width">
+    <span class="bar-stable"><strong class="p1">Wastage</strong></span>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <div ng-controller="LoginCtrl">
+      <button class="button button-icon  ion-power" style="color: #fff" ng-click="logout()">
+      </button>
+    </div>
+  </ion-nav-buttons>
+
+  <ion-content class="back-image" ng-controller="WastageCtrl">
+
+    <div>
+      <div class="txt_align font">
+        <h3 class="h31  txt_color1">{{tenantname}}</h3>
+        <p class=" txt_color2"><strong>{{mealtypename}}&nbsp;/&nbsp;COMPLETED</strong></p>
+      </div>
+    </div>
+    <form name="wastages">
+      <div class="" padding="true">
+
+        <!--         <div class="row" style="background-color:#515151;color:#fff">
+            <div class="col col-100">
+                <span>Items</span>
+            </div>
+        </div>
+        <br> -->
+
+        <div class="forms">
+          Total Qty
+        </div>
+        <div class="forms">
+          <input type="number" style="width: 100%;" ng-model="waste.totalqty" ng-Required="true">
+        </div>
+
+        <div class="forms">
+          Wastage Qty
+        </div>
+        <div class="forms">
+          <input type="number" style="width: 100%;" ng-model="waste.wasteqty" ng-Required="true">
+        </div>
+        <div class="forms">Remarks</div>
+        <div class="forms">
+          <textarea placeholder="comments" style="width: 100%;" ng-model="waste.comment" rows="4" name="description"></textarea>
+        </div>
+        <br>
+      </div>
+
+    </form>
+    <div class="" style="text-align: center;" padding="true">
+      <button class="button button-calm icon-left ion-ios-camera-outline" ng-show="!camera" ng-click="takePicture()">Add Photo</button>
+      <button class="button button-calm ion-checkmark" ng-show="camera">Add Photo</button>
+
+      <button class="button button-balanced " ng-disabled="wastages.$invalid" ng-click="wastage()">Save</button>
+    </div>
+    </div>
+  </ion-content>
+</ion-view>

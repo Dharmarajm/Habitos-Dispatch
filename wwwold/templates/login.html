@@ -1,0 +1,77 @@
+
+
+<ion-view view-title="login" cache-view="false">
+    
+  <ion-content class="back-image">
+  <br>
+  <br>
+  <br>  
+    <!-- <div class="row">
+      <div class="col col-35"></div>
+      <div class="col col-30">
+        <img src="/android_asset/www/img/idlis.png" height="150px"width:"100%;">
+      </div>
+      <div class="col col-35"></div>
+    </div>
+
+    
+
+    <div class="div">
+        <h4 style="color:#21966B">Organization</h4>
+    </div>
+    <div class="row">
+      <div class="col col-50"><img src="/android_asset/www/img/newid.gif" height="32px" style="margin-left:60%"></div>
+      <div class="col col-50"><img src="/android_asset/www/img/newdab.gif" height="40px" style="margin-left:-13%"></div>
+    </div> -->
+
+    <div class="row">
+      <div class="col col-35"></div>
+      <div class="col col-30">
+        <img src="img/habitos.png" height="150px"width:"100%;">
+      </div>
+      <div class="col col-35"></div>
+    </div>
+
+    
+
+    <center>
+        <h4 style="color:#EE5423">Organization</h4>
+    </center>
+    <!-- <div class="row">
+      <div class="col col-50"><img src="/img/newid.gif" height="32px" style="margin-left:55%"></div>
+      <div class="col col-50"><img src="/img/newdab.gif" height="40px" style="margin-left:-20%"></div>
+    </div>
+   -->
+    <form name="delivery" ng-controller="LoginCtrl">
+
+      <div class="group12">      
+         <input class="button button-small button-block button-whiter" type="text" placeholder="Username" ng-Required="true"  ng-model="user.username">
+         
+      </div>
+     
+      <div class="group12">      
+         <input class="button button-small button-block button-whiter" type="password" placeholder="Password" ng-Required="true" ng-model="user.password">
+         <!-- <p><input type="checkbox" ng-model="checked" ng-checked="checked">Remember&nbsp;Me</p> -->
+         <ion-checkbox ng-model="checked" ng-checked="checked" style="background-color:transparent;border-color:transparent;padding-left:45px;width:50%">Remember Me</ion-checkbox >
+      </div>
+
+     
+
+      <!--div class="button-bar group1">
+       
+
+        <a class="button button-small  button-darkless" ng-model="logdata" ng-class="{'activat' : logdata == 'Dispatch'}" ng-click="audit('Dispatch')">Dispatch</a>&nbsp;
+        <a class="button button-small button-darkless" ng-model="logdata" ng-class="{'activat' : logdata == 'Delivery'}" ng-click="audit('Delivery')">Delivery</a>&nbsp;
+         <a class="button button-small  button-darkless" ng-model="logdata" ng-class="{'activat' : logdata == 'Audit'}" ng-click="audit('Audit')">Audit</a>
+      </div-->
+ 
+      <div class="group1">
+        <button class="button button-block button-dark button-darkerless" ng-disabled="delivery.$invalid" ng-click='login()' >Login</button>
+        
+      </div>
+
+
+    </form>
+
+ </ion-content>
+</ion-view>
