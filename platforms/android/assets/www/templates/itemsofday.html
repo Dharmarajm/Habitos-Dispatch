@@ -119,7 +119,7 @@
           <div class="col col-20"></div>
           <div class="col col-60">
            <!-- ng-disabled="!ans.itemno || !ans.utensitem || !item_qty || !ans.foodsitem " -->
-            <a ng-disabled="!ans.utensitem || !item_qty || !ans.foodsitem || !ans.utens_id " class="button button-small button-darkless button-block button-positive" ng-click="additems()">Save & Add New</a>
+            <a ng-disabled="!ans.utensitem || !item_qty || !ans.foodsitem || !ans.utens_id || multiAssetCount< ans.utensils_qty || multi_utensil==true && ans.utensils_qty<=0 || multi_utensil==true && ans.utensils_qty==undefined" class="button button-small button-darkless button-block button-positive" ng-click="additems()">Save & Add New</a>
           </div>
           <div class="col col-20"></div>
         </div>

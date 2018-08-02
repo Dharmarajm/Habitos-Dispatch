@@ -8,11 +8,6 @@
 
 
 angular.module('starter', ['ionic', 'starter.controllers','starter.dispatch','starter.deliveries','ngCordova','starter.services','ionic-ratings','ionic-datepicker','ngMap','ngIdle'])
-
-
-
-
-
 .run(function($ionicPlatform,$ionicPopup,$ionicHistory,$rootScope,$http,$state) {
 
   /*$ionicPlatform.ready(function() {
@@ -347,7 +342,7 @@ $ionicConfigProvider.tabs.position('bottom');
 //var CommonURL="http://api.learnstein.com:81";
 //var CommonURL="http://api.texparts.in:81"
 //var CommonURL="http://192.168.1.18:3000";  
-var CommonURL="http://192.168.1.72:3005"; 
+var CommonURL="http://192.168.1.73:3005"; 
 //var CommonURL="http://13.126.175.143:3000";
 //var CommonURL="http://115.111.129.98:6002";
 //var CommonURL="http://api.idlidabba.com"

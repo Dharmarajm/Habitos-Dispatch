@@ -296,9 +296,12 @@ angular.module('starter.dispatch', [])
   /*end utensil select dropdown*/
 
   $scope.utensname=function(test){
+    
     if(test!=null && test!=undefined && test!="" && test.count!=null){
-      $scope.ans.utensils_qty=test.count;
+      $scope.multiAssetCount=test.count;
+      $scope.ans.utensils_qty=$scope.multiAssetCount;
     }else{
+      $scope.multiAssetCount=null;
       $scope.ans.utensils_qty=null;
     }
   }
@@ -1130,8 +1133,10 @@ angular.module('starter.dispatch', [])
 
       $scope.utensname=function(test){
        if(test!=null && test!=undefined && test!="" && test.count!=null){
-         $scope.ans.utensils_qty=test.count;
+         $scope.multiAssetCount=test.count;
+         $scope.ans.utensils_qty=$scope.multiAssetCount;
        }else{
+         $scope.multiAssetCount=null;
          $scope.ans.utensils_qty=null;
        }
       }

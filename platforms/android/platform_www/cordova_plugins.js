@@ -316,7 +316,7 @@ module.exports.metadata =
     "cordova-plugin-device": "1.1.5",
     "com-badrit-base64": "0.2.0",
     "cordova-plugin-compat": "1.1.0",
-    "cordova-plugin-camera": "2.4.0",
+    "cordova-plugin-camera": "2.4.1",
     "cordova-plugin-console": "1.0.6",
     "cordova-plugin-file": "4.3.2",
     "cordova-plugin-file-transfer": "1.6.2",

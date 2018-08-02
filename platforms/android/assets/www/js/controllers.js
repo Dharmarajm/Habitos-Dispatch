@@ -1,6 +1,4 @@
-angular.module('starter.controllers', ['ionic-ratings'])
-
-
+angular.module('starter.controllers', ['ionic-ratings','ngCordova'])
 .controller('LoginCtrl', function($scope,$interval,$state,$http,$rootScope,$ionicPlatform,$ionicPopup,Idle,Keepalive,$cordovaGeolocation) {
     /*console.log(localStorage.getItem("checked"))
     if(localStorage.getItem("checked") != '' || localStorage.getItem("checked") != null ){
@@ -184,13 +182,8 @@ angular.module('starter.controllers', ['ionic-ratings'])
 
  })/*Controller end*/
 
-
-
-
 .controller('HomeCtrl', function($scope,$filter,$state,$http,$ionicPopup,$controller) {
   $controller('commonCtrl', {$scope: $scope});
-
-
 
   var newdate = new Date();
   $scope.datenow = $filter('date')(newdate, "dd-MM-yyyy");
@@ -207,10 +200,12 @@ angular.module('starter.controllers', ['ionic-ratings'])
         $scope.totalval=$scope.auditcount;
 
         localStorage.setItem("total",$scope.totalval);
+        $scope.total=localStorage.getItem("total")
+
     });
-
+  
   $scope.started=localStorage.getItem("lendata");
-
+ 
     /*To click the Audit on delivery service  food above name click to open prombt*/
 
     $scope.order=function(){
@@ -438,6 +433,7 @@ angular.module('starter.controllers', ['ionic-ratings'])
   
   /*Camera button to click open this function*/
   $scope.takePicture = function(image) {
+    console.log(image)
     var options = { 
         quality : 75, 
         destinationType : Camera.DestinationType.DATA_URL, 
@@ -449,9 +445,10 @@ angular.module('starter.controllers', ['ionic-ratings'])
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false
     };
+    console.log(options)
 
     $cordovaCamera.getPicture(options).then(function(imageData) {
-    
+      console.log(imageData) 
       if(image == 'clean'){
         $scope.cleaner = "data:image/jpeg;base64," + imageData;
       }
@@ -465,6 +462,9 @@ angular.module('starter.controllers', ['ionic-ratings'])
         $scope.cutleryer = "data:image/jpeg;base64," + imageData;
       }
         
+    }, function(err) {
+      // error
+      console.log(err)
     });
   }/*end camera function*/
 
@@ -568,7 +568,7 @@ angular.module('starter.controllers', ['ionic-ratings'])
 
 /*to open food controller food page in Auditor screen*/
 
-.controller('FoodCtrl', function($scope,$state,$http,$cordovaFileTransfer,$cordovaCamera,$rootScope,$parse) {
+.controller('FoodCtrl', function($scope,$state,$http,$cordovaFileTransfer,$cordovaCamera,$rootScope,$parse){
 
 /*to take a camera function using food page*/
     $scope.takePicture = function() {
@@ -586,6 +586,9 @@ angular.module('starter.controllers', ['ionic-ratings'])
  
         $cordovaCamera.getPicture(options).then(function(imageData) {
             $scope.foodaudit = "data:image/jpeg;base64," + imageData;
+        }, function(err) {
+          // error
+          console.log(err)
         });
     
   }
